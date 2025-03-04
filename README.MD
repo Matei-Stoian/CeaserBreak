@@ -1,2 +1,3 @@
 # Ceaser Chiper
-This is my approach of implementing the a method of craking the Ceasar algorithm using the Chi-Squared distance. If you want to learn more you can checkout this article https://ibmathsresources.com/2014/06/15/using-chi-squared-to-crack-codes/
+This is my implementation of a Caesar Cipher encryptor and decryptor, using a known shift or attempting to crack the code.
+
