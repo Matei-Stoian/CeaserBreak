@@ -1,17 +1,23 @@
 CC = gcc
+CFLAGS = -Wall -Wextra -std=c99 -g -lm
+LDLIBS = -lm
 
-CFLAGS = -Wall -Wextra -std=c99
-
-TARGET = cesar_cipher
-
-SRC = cracker.c
+TARGET = caesar_cipher
+SRC = main.c caser.c
+OBJ = $(SRC:.c=.o)
 
 all: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
+
+%.o: %.c caeser.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+run: $(TARGET)
+	./$(TARGET)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) *.o
 
-.PHONY: all clean
+.PHONY: all run clean
