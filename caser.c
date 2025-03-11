@@ -35,7 +35,8 @@ void compute_histogram(const char *text, double histogram[ALPHA])
     {
         if (isalpha(text[i]))
         {
-            counter[text[i]-'a']++;
+            char c = tolower(text[i]);  // Convert to lowercase first
+            counter[c - 'a']++;         // Now safe to use as index
             total++;
         }
     }

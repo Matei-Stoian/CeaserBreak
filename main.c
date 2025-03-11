@@ -107,15 +107,18 @@ int main()
                 printf("No input text available. Please read text first.\n");
                 break;
             }
-            break_chiper(input_text, top, top_dist, chi_square_dist);
-            printf("\nTop %d most likely shifts using Chi-squared distance:\n", 3);
-            for (int i = 0; i < 3; i++)
             {
-                if (top[i] != -1)
+                printf("Breaking cipher using Chi-squared distance...\n");
+                break_chiper(input_text, top, top_dist, chi_square_dist);
+                printf("\nTop %d most likely shifts using Chi-squared distance:\n", 3);
+                for (int i = 0; i < 3; i++)
                 {
-                    decrypt(input_text, top[i], output_text);
-                    printf("%d. Shift: %d, Distance: %.6f\n", i + 1, top[i], top_dist[i]);
-                    printf("Decrypted: %s\n", output_text);
+                    if (top[i] != -1)
+                    {
+                        decrypt(input_text, top[i], output_text);
+                        printf("%d. Shift: %d, Distance: %.6f\n", i + 1, top[i], top_dist[i]);
+                        printf("Decrypted: %s\n", output_text);
+                    }
                 }
             }
             break;
